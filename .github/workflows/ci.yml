@@ -26,5 +26,5 @@ jobs:
         env:
           USER: openfoam
         run: |
-          echo "::group::My title"
+          su - openfoam
           simpleFoam

@@ -25,4 +25,5 @@ jobs:
       - name: Run a one-line script
         shell: bash
         run: |
+          source /opt/openfoam10/etc/bashrc
           simpleFoam

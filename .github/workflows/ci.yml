@@ -23,5 +23,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         shell: bash
+        env:
+          USER: openfoam
         run: |
+          echo "::group::My title"
           simpleFoam

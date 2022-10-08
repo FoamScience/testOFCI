@@ -31,12 +31,20 @@ jobs:
       # Runs a single command using the runners shell
       - name: Compile and Test
         run: |
+          echo "::group::Initial setup"
           pwd
           source /opt/openfoam9/etc/bashrc
+          echo "::endgroup::"
+          echo "::group::Clone Unit testing framework"
           git clone https://github.com/FoamScience/OpenFOAM-Unit-testing --branch=of9 ut
+          echo "::endgroup::"
+          echo "::group::Plug in the new tests"
           rm -rf ut/tests/serialParallelTests ut/tests/Make
           ln -s serialParallelTests ut/tests/serialParallelTests
           ln -s Make ut/tests/Make
-          cd ut
-          sed -i 's/mpirun/mpirun --oversubscribe/g' Alltest
-          ./Alltest
+          ls ut/tests/Make
+          echo "::endgroup::"
+          echo "::group::Compile"
+          cd ut/tests
+          wmake
+          echo "::endgroup::"

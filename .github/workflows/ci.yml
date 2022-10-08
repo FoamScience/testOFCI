@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-22.04
     container:
       image: ghcr.io/foamscience/jammy-openfoam:10
-      options: --user openfoam --cpus 4
+      options: --user openfoam --cpus 2
       env:
         CATCH_TIMEOUT: 20
 

@@ -1,7 +1,7 @@
-# This is a basic workflow to run in OpenFOAM 10 containers
-name: OF10
+# This is a basic workflow to run in OpenFOAM 9 containers
+name: OF9
 
-# Make sure shells are login-interactive ones, so OF gets sourced
+# Make sure shells are interactive, so OF can get sourced
 defaults:
   run:
     shell: bash -o pipefail -i {0}
@@ -17,7 +17,7 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-22.04
     container:
-      image: ghcr.io/foamscience/jammy-openfoam:10
+      image: ghcr.io/foamscience/jammy-openfoam:9
       options: --cpus 2 --user openfoam
       env:
         CATCH_TIMEOUT: 20
@@ -25,20 +25,18 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
       - name: Compile and Test
         run: |
           pwd
-          source /opt/openfoam10/etc/bashrc
-          git clone https://github.com/FoamScience/OpenFOAM-Unit-testing ut
-          cp -rT ut/tests/serialParallelTests serialParallelTests
-          cp -rT ut/tests/Make Make
+          source /opt/openfoam9/etc/bashrc
+          git clone https://github.com/FoamScience/OpenFOAM-Unit-testing --branch=of9 ut
           rm -rf ut/tests/serialParallelTests ut/tests/Make
           ln -s serialParallelTests ut/tests/serialParallelTests
           ln -s Make ut/tests/Make
           cd ut
           sed -i 's/mpirun/mpirun --oversubscribe/g' Alltest
           ./Alltest
-          

@@ -14,7 +14,9 @@ jobs:
     runs-on: ubuntu-22.04
     container:
       image: ghcr.io/foamscience/jammy-openfoam:10
-      options: --user openfoam
+      options: --user openfoam --cpus 4
+      env:
+        CATCH_TIMEOUT: 20
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -25,5 +27,4 @@ jobs:
       - name: Run a one-line script
         shell: bash
         run: |
-          source /opt/openfoam10/etc/bashrc
-          simpleFoam --help
+          id

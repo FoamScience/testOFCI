@@ -29,4 +29,6 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Compile and Test
-        run: ./script.sh
+        run: |
+          source /opt/openfoam10/etc/bashrc
+          simepleFoam -help

@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-22.04
     container:
       image: ghcr.io/foamscience/jammy-openfoam:10
-      options: --cpus 2
+      options: --cpus 2 --user openfoam
       env:
         CATCH_TIMEOUT: 20
 
@@ -29,4 +29,6 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Compile and Test
-        run: ./script.sh
+        run: |
+          id
+          simpleFoam -help

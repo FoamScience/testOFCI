@@ -4,7 +4,7 @@ name: OF10
 # Make sure shells are login-interactive ones, so OF gets sourced
 defaults:
   run:
-    shell: bash -o pipefail -ic {0}
+    shell: bash -o pipefail -i {0}
 
 # Controls when the workflow will run
 on:

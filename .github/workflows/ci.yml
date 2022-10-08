@@ -29,4 +29,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Compile and Test
-        run: 'bash -ic "source /opt/openfoam10/etc/bashrc; simpleFoam --help"'
+        run: 'id'

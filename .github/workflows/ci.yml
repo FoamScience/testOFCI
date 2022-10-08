@@ -25,5 +25,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        shell: bash
-        run: bash -lic "simpleFoam --help"
+        shell: python
+        run: |
+         import os
+         os.system("simpleFoam --help")

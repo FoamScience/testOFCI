@@ -25,8 +25,8 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        shell: bash
+        shell: bash -li
         run: |
           id
           ls
-          mpirun -np 2 echo  "Hello World!"
+          simpleFoam --help

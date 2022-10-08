@@ -4,7 +4,7 @@ name: OF10
 # Make sure shells are login-interactive ones, so OF gets sourced
 defaults:
   run:
-    shell: bash -o pipefail -ilc {0}
+    shell: bash -o pipefail -ic {0}
 
 # Controls when the workflow will run
 on:
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-22.04
     container:
       image: ghcr.io/foamscience/jammy-openfoam:10
-      options: --cpus 2 --user openfoam
+      options: --cpus 2
       env:
         CATCH_TIMEOUT: 20
 

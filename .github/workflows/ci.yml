@@ -30,6 +30,15 @@ jobs:
       # Runs a single command using the runners shell
       - name: Compile and Test
         run: |
-          id
+          pwd
           source /opt/openfoam10/etc/bashrc
-          simpleFoam -help
+          git clone https://github.com/FoamScience/OpenFOAM-Unit-testing ut
+          cp -rT ut/tests/serialParallelTests serialParallelTests
+          cp -rT ut/tests/Make Make
+          rm -rf ut/tests/serialParallelTests ut/tests/Make
+          ln -s serialParallelTests ut/tests/serialParallelTests
+          ln -s Make ut/tests/Make
+          cd ut
+          sed -i 's/mpirun/mpirun --oversubscribe/g' Alltest
+          ./Alltest
+          

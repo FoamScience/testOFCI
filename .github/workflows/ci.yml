@@ -40,11 +40,15 @@ jobs:
           echo "::endgroup::"
           echo "::group::Plug in the new tests"
           rm -rf ut/tests/serialParallelTests ut/tests/Make
-          ln -s serialParallelTests ut/tests/serialParallelTests
-          ln -s Make ut/tests/Make
+          ln -s "$PWD/serialParallelTests" "$PWD/ut/tests/serialParallelTests"
+          ln -s "$PWD/Make" "$PWD/ut/tests/Make"
           ls ut/tests/Make
           echo "::endgroup::"
           echo "::group::Compile"
           cd ut/tests
           wmake
+          echo "::endgroup::"
+          echo "::group::Test"
+          cd ..
+          ./Alltest
           echo "::endgroup::"

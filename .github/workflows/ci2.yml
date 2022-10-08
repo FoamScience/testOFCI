@@ -37,6 +37,8 @@ jobs:
           ln -s "$PWD/serialParallelTests" "$PWD/ut/tests/serialParallelTests"
           ln -s "$PWD/Make" "$PWD/ut/tests/Make"
           ls ut/tests/Make ut/tests/serialParallelTests
-          cd ut
+          cd ut/tests
+          wmake
+          cd ..
           sed -i 's/mpirun/mpirun --oversubscribe/g' Alltest
           ./Alltest

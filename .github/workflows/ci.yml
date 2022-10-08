@@ -25,7 +25,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        shell: bash -ilec {0}
+        shell: bash bash -ileo pipefail -c {0}
         run: |
           id
           ls

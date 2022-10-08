@@ -42,7 +42,7 @@ jobs:
           rm -rf ut/tests/serialParallelTests ut/tests/Make
           ln -s "$PWD/serialParallelTests" "$PWD/ut/tests/serialParallelTests"
           ln -s "$PWD/Make" "$PWD/ut/tests/Make"
-          ls ut/tests/Make
+          ls ut/tests/Make ut/tests/serialParallelTests
           echo "::endgroup::"
           echo "::group::Compile"
           cd ut/tests

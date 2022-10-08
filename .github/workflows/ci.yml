@@ -26,4 +26,4 @@ jobs:
         shell: bash
         run: |
           source /opt/openfoam10/etc/bashrc
-          simpleFoam
+          simpleFoam --help

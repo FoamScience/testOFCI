@@ -5,7 +5,7 @@ name: CI
 # Make sure shells are login-interactive ones, so OF gets sourced
 defaults:
   run:
-    shell: bash -lic {0}
+    shell: bash -o pipefail -ic {0}
 
 # Controls when the workflow will run
 on:
